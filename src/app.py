@@ -1,18 +1,20 @@
 #!/usr/bin/env python3
-
-from flask import Flask, request
+from flask import Flask, request, render_template
+import datetime
 
 app = Flask(__name__)
 
+# TODO: Add rabbitmq. Use it to send messages.
+
 @app.route("/")
 def main():
-    return '''
-    <h1>Dummy Change</h1>
-     <form action="/echo_user_input" method="POST">
-         <input name="user_input">
-         <input type="submit" value="Submit!">
-     </form>
-     '''
+    f = open("home.txt", "a")
+    now = datetime.datetime.now()
+    text = f"<div>Page Hit: {now}</div>"
+    f.write(text)
+    f.close()
+
+    render_template('index.html')
 
 @app.route("/echo_user_input", methods=["POST"])
 def echo_input():
