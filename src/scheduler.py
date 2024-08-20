@@ -1,7 +1,7 @@
 import datetime
-# TODO: Run some worker/process every so often.
+# NOTE: This runs using a heroku scheduler, but, locally, it does nothing.
 
-f = open("scheduler_runs.txt", "a")
+f = open("scheduler.txt", "a")
 now = datetime.datetime.now()
 text = f"<div>Scheduler Run: {now}</div>"
 

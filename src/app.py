@@ -14,7 +14,15 @@ def main():
     f.write(text)
     f.close()
 
-    render_template('index.html')
+    home = open("home.txt", "r").read()
+    scheduler = open("scheduler.txt").read()
+
+    runs = {
+        "home": home,
+        "scheduler": scheduler,
+    }
+    
+    return render_template('index.html', runs=runs)
 
 @app.route("/echo_user_input", methods=["POST"])
 def echo_input():
