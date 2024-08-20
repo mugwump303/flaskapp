@@ -4,4 +4,5 @@ export FLASK_DEBUG=1
 flask run
 
 
-
+docker rm -v $(docker ps --filter status=exited -q)
+docker compose up -d prometheus

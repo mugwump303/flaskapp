@@ -1,10 +1,19 @@
 #!/usr/bin/env python3
-from flask import Flask, request, render_template
+from flask import Flask, Response, request, render_template
 import datetime
+from prometheus_client import Counter, generate_latest
+
+COUNTER = Counter(
+    'Hits',
+    'Visits to Homepage',
+)
+
+LOGS = Counter(
+    'Logs',
+    'Jobs Logged to App',
+)
 
 app = Flask(__name__)
-
-# TODO: Add rabbitmq. Use it to send messages.
 
 @app.route("/")
 def main():
@@ -39,3 +48,8 @@ def log_scheduler():
 def echo_input():
     input_text = request.form.get("user_input", "")
     return "You entered: " + input_text
+
+@app.get('/metrics')
+def get_metrics():
+    # https://stackoverflow.com/questions/25860304/how-do-i-set-response-headers-in-flask
+    return Response(generate_latest(), content_type='text/plain')
