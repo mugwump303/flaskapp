@@ -10,13 +10,15 @@ COUNTER = Counter(
 
 LOGS = Counter(
     'Logs',
-    'Jobs Logged to App',
+    'Jobs Logged to App ',
 )
 
 app = Flask(__name__)
 
 @app.route("/")
 def main():
+    
+
     f = open("home.txt", "a")
     now = datetime.datetime.now()
     text = f"<div>Page Hit: {now}</div>"
