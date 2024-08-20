@@ -17,7 +17,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def main():
-    
+    COUNTER.inc(1)
 
     f = open("home.txt", "a")
     now = datetime.datetime.now()
@@ -38,6 +38,7 @@ def main():
 
 @app.route("/log_scheduler/", methods=["GET"])
 def log_scheduler():
+    LOGS.inc(1)
     f = open("scheduler.txt", "a")
     now = datetime.datetime.now()
     text = f"<div>Scheduler Run: {now}</div>"
