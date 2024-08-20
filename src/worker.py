@@ -11,7 +11,6 @@ def log_work(channel, method, properties, message):
     print(response.status_code)
     print(response.text)
 
-# TODO: Add rabbitmq. Listen for messages and then do some job.
 # rabbiturl = 'localhost'
 # connection_parameters = pika.ConnectionParameters(rabbiturl)
 

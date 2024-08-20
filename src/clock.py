@@ -16,12 +16,9 @@ connection = pika.BlockingConnection(connection_parameters)
 channel = connection.channel()
 channel.queue_declare(queue='logschedule') # uses "default" exchange implicity
 
-# TODO: Add rabbitmq. Add messages to queue on each interval.
-
 sched = BlockingScheduler()
 
 i=0
-
 @sched.scheduled_job('interval', seconds=10)
 def timed_job():
     global i

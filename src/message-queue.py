@@ -1,1 +1,0 @@
-# TODO: Listen to rabbitmq and respond as needed.
