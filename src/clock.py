@@ -19,7 +19,8 @@ channel.queue_declare(queue='logschedule') # uses "default" exchange implicity
 sched = BlockingScheduler()
 
 i=0
-@sched.scheduled_job('interval', seconds=10)
+# @sched.scheduled_job('interval', seconds=10)
+@sched.scheduled_job('interval', minutes=30)
 def timed_job():
     global i
     now = datetime.datetime.now()
