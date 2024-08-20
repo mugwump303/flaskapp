@@ -26,7 +26,7 @@ def main():
 
 
 @app.route("/log_scheduler/", methods=["GET"])
-def echo_input():
+def log_scheduler():
     f = open("scheduler.txt", "a")
     now = datetime.datetime.now()
     text = f"<div>Scheduler Run: {now}</div>"
